@@ -1,6 +1,6 @@
 ---
 title: 'webpack入门(二)-入口(entry)&出口(output)'
-date: 2019-10-08
+date: 2019-10-07
 categories: webpack # 分类只能有1个
 tags: # 标签可以有多个
   - webpack入门
