@@ -142,25 +142,25 @@ module.exports = {
 const path = require('path');
 
 module.exports = {
-	mode: 'development',
-	entry: {
-		main: './src/index.js'
-	},
-	module: {
-		rules: [{
-			test: /\.jpg$/,
-			use: {
-				loader: 'file-loader',
-				options: {
-					name: '[name].[ext]'
-				}
-			}
-		}]
-	},
-	output: {
-		filename: 'bundle.js',
-		path: path.resolve(__dirname, 'dist')
-	}
+  mode: 'development',
+  entry: {
+    main: './src/index.js'
+  },
+  module: {
+    rules: [{
+      test: /\.jpg$/,
+      use: {
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]'
+        }
+      }
+    }]
+  },
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
 }
 ```
 
@@ -183,26 +183,26 @@ module.exports = {
 const path = require('path');
 
 module.exports = {
-	mode: 'development',
-	entry: {
-		main: './src/index.js'
-	},
-	module: {
-		rules: [{
-			test: /\.(jpg|png|gif)$/,
-			use: {
-				loader: 'file-loader',
-				options: {
-					//placeholde 占位符
-					name: '[name]_[hash].[ext]'
-				}
-			}
-		}]
-	},
-	output: {
-		filename: 'bundle.js',
-		path: path.resolve(__dirname, 'dist')
-	}
+  mode: 'development',
+  entry: {
+    main: './src/index.js'
+  },
+  module: {
+    rules: [{
+      test: /\.(jpg|png|gif)$/,
+      use: {
+        loader: 'file-loader',
+        options: {
+          //placeholde 占位符
+          name: '[name]_[hash].[ext]'
+        }
+      }
+    }]
+  },
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
 }
 ```
 
@@ -213,27 +213,27 @@ module.exports = {
 const path = require('path');
 
 module.exports = {
-	mode: 'development',
-	entry: {
-		main: './src/index.js'
-	},
-	module: {
-		rules: [{
-			test: /\.(jpg|png|gif)$/,
-			use: {
-				loader: 'file-loader',
-				options: {
-					//placeholde 占位符
-					name: '[name]_[hash].[ext]',
-					outputPath: 'images/'
-				}
-			}
-		}]
-	},
-	output: {
-		filename: 'bundle.js',
-		path: path.resolve(__dirname, 'dist')
-	}
+  mode: 'development',
+  entry: {
+    main: './src/index.js'
+  },
+  module: {
+    rules: [{
+      test: /\.(jpg|png|gif)$/,
+      use: {
+        loader: 'file-loader',
+        options: {
+          //placeholde 占位符
+          name: '[name]_[hash].[ext]',
+          outputPath: 'images/'
+        }
+      }
+    }]
+  },
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
 }
 ```
 使用`outputPath: 'images/'`配置
@@ -274,27 +274,27 @@ module.exports = {
 const path = require('path');
 
 module.exports = {
-	mode: 'development',
-	entry: {
-		main: './src/index.js'
-	},
-	module: {
-		rules: [{
-			test: /\.(jpg|png|gif)$/,
-			use: {
-				loader: 'url-loader',
-				options: {
-					//placeholde 占位符
-					name: '[name]_[hash].[ext]',
-					outputPath: 'images/'
-				}
-			}
-		}]
-	},
-	output: {
-		filename: 'bundle.js',
-		path: path.resolve(__dirname, 'dist')
-	}
+  mode: 'development',
+  entry: {
+    main: './src/index.js'
+  },
+  module: {
+    rules: [{
+      test: /\.(jpg|png|gif)$/,
+      use: {
+        loader: 'url-loader',
+        options: {
+          //placeholde 占位符
+          name: '[name]_[hash].[ext]',
+          outputPath: 'images/'
+        }
+      }
+    }]
+  },
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
 }
 ```
 - 打包,发现只生成了一个文件,但是打开`index.html`依旧能看到图片
@@ -324,27 +324,27 @@ module.exports = {
 const path = require('path');
 
 module.exports = {
-	mode: 'development',
-	entry: {
-		main: './src/index.js'
-	},
-	module: {
-		rules: [{
-			test: /\.(jpg|png|gif)$/,
-			use: {
-				loader: 'url-loader',
-				options: {
-					//placeholde 占位符
-					name: '[name]_[hash].[ext]',
-					outputPath: 'images/',
-					limit: 1024
-				}
-			}
-		}]
-	},
-	output: {
-		filename: 'bundle.js',
-		path: path.resolve(__dirname, 'dist')
-	}
+  mode: 'development',
+  entry: {
+    main: './src/index.js'
+  },
+  module: {
+    rules: [{
+      test: /\.(jpg|png|gif)$/,
+      use: {
+        loader: 'url-loader',
+        options: {
+          //placeholde 占位符
+          name: '[name]_[hash].[ext]',
+          outputPath: 'images/',
+          limit: 1024
+        }
+      }
+    }]
+  },
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
 }
 ```
