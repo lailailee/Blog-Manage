@@ -8,7 +8,7 @@ tags: # 标签可以有多个
 
 <!-- more -->
 
-[>>>整个项目deemo](https://github.com/lailailee/webpack4.0-advanced-deemo)
+[>>>整个项目deemo](https://github.com/lailailee/webpack4.0-advanced)
 
 ### 1.文件目录
 
@@ -49,7 +49,7 @@ root.append(img);
 
 ### 3.JPG文件的加载
 
-[>>> deemo01](https://github.com/lailailee/webpack4.0-advanced-deemo/tree/master/deemo01-complex-img-onlyjpg)
+[>>> deemo01](https://github.com/lailailee/webpack4.0-advanced/tree/master/deemo01-complex-img-onlyjpg)
 
 - JPG文件的加载需要用到`file-loader`这个组件
 
@@ -133,7 +133,7 @@ module.exports = {
 
 ## 4.进阶的需求
 
-[>>> deemo02](https://github.com/lailailee/webpack4.0-advanced-deemo/tree/master/deemo02-complex-img-more)
+[>>> deemo02](https://github.com/lailailee/webpack4.0-advanced/tree/master/deemo02-complex-img-more)
 
 #### 1.  需要打包过去的图片名称不变
 
