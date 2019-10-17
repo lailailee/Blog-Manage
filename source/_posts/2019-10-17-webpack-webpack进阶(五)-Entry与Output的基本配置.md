@@ -1,6 +1,6 @@
 ---
 title: 'webpack进阶(五):Entry与Output的基本配置'
-date: 2019-10-15
+date: 2019-10-17
 categories: webpack # 分类只能有1个
 tags: # 标签可以有多个
   - webpack进阶
