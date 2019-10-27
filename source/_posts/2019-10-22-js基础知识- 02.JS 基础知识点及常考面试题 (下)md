@@ -1,0 +1,138 @@
+---
+title: 'js基础知识 - 02.JS 基础知识点及常考面试题(下).md'
+date: 2019-10-22
+categories: js基础知识 # 分类只能有1个
+tags: # 标签可以有多个
+  - js基础知识
+---
+
+- [ ] 1. == 和 === 有什么区别?[] == ![] ?
+- [ ] 2. 什么是闭包？经典面试题
+- [ ] 3. 什么是浅拷贝？如何实现浅拷贝？什么是深拷贝？如何实现深拷贝？
+- [ ] 4. 如何理解原型？如何理解原型链？
+
+<!-- more -->
+
+[>>>The-Road](https://github.com/lailailee/The-Road)
+
+- [ ] 1. == 和 === 有什么区别?[] == ![] ?
+- [ ] 2. 什么是闭包？经典面试题
+- [ ] 3. 什么是浅拷贝？如何实现浅拷贝？什么是深拷贝？如何实现深拷贝？
+- [ ] 4. 如何理解原型？如何理解原型链？
+
+#### 1. == 和 === 有什么区别?[] == ![]
+
+对于 == 来说，如果对比双方的类型不一样的话，就会进行类型转换
+
+1. 首先会判断两者类型是否相同。相同的话就是比大小了
+1. 类型不相同的话，那么就会进行类型转换
+1. 会先判断是否在对比 null 和 undefined，是的话就会返回 true
+1. 判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number
+1. 判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断
+1. 判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断
+
+对于 === 来说就简单多了，就是判断两者类型和值是否相同。
+
+#### 2. 什么是闭包
+
+> 定义: 函数 A 内部有一个函数 B，函数 B 可以访问到函数 A 中的变量，那么函数 B 就是闭包。
+
+> 意义: 让我们可以间接访问函数内部的变量。
+
+##### 经典面试题，循环中使用闭包解决 `var` 定义函数的问题
+
+```js
+for (var i = 1; i <= 5; i++) {
+  setTimeout(function timer() {
+    console.log(i)
+  }, i * 1000)
+}
+```
+
+#### 3. 什么是浅拷贝？如何实现浅拷贝？什么是深拷贝？如何实现深拷贝？
+
+1. 浅拷贝
+2. 深拷贝
+
+(1).通常可以通过`JSON.parse(JSON.stringify(object))` 来解决。
+
+但是该方法也是有局限性的：
+
+- 会忽略 undefined
+- 会忽略 symbol
+- 不能序列化函数
+- 不能解决循环引用的对象
+
+```js
+let obj = {
+  a: 1,
+  b: {
+    c: 2,
+    d: 3,
+  },
+}
+obj.c = obj.b
+obj.e = obj.a
+obj.b.c = obj.c
+obj.b.d = obj.b
+obj.b.e = obj.b.c
+let newObj = JSON.parse(JSON.stringify(obj))
+console.log(newObj)
+```
+
+![image](http://lailailee.oss-cn-chengdu.aliyuncs.com/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/TheRoad/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BA.jpg)
+
+```js
+let a = {
+  age: undefined,
+  sex: Symbol('male'),
+  jobs: function() {},
+  name: 'yck',
+}
+let b = JSON.parse(JSON.stringify(a))
+console.log(b) // {name: "yck"}
+```
+
+该方法会忽略掉函数和 undefined 。
+
+(2). 简易深拷贝
+
+[Reflect](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect)
+
+```js
+function deepClone(obj) {
+  function isObject(o) {
+    return (typeof o === 'object' || typeof o === 'function') && o !== null
+  }
+
+  if (!isObject(obj)) {
+    throw new Error('非对象')
+  }
+
+  let isArray = Array.isArray(obj)
+  let newObj = isArray ? [...obj] : { ...obj }
+  Reflect.ownKeys(newObj).forEach(key => {
+    newObj[key] = isObject(obj[key]) ? deepClone(obj[key]) : obj[key]
+  })
+
+  return newObj
+}
+
+let obj = {
+  a: [1, 2, 3],
+  b: {
+    c: 2,
+    d: 3,
+  },
+}
+let newObj = deepClone(obj)
+newObj.b.c = 1
+console.log(obj.b.c) // 2
+```
+
+#### 4. 如何理解原型？如何理解原型链？
+
+1. Object 是所有对象的爸爸，所有对象都可以通过 `__proto__` 找到它
+1. Function 是所有函数的爸爸，所有函数都可以通过 `__proto__` 找到它
+1. 函数的 prototype 是一个对象
+1. 对象的 `__proto__` 属性指向原型， `__proto__` 将对象和原型连接起来组成了原型链
